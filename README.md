@@ -30,7 +30,7 @@
    * Sungjoon Park
    * Nayoun Seo
    * Jaysok Park
-   * Jayoon Kim
+   * Jaeyoon Kim
    * Wonki Kim
    * Kuhyun Jung
    * Taehyun Kim
