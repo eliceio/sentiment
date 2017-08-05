@@ -1,0 +1,21 @@
+#needs-correction *{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+#needs-correction .column-header {
+    border-bottom:1px solid #eee;
+    height:30px;
+}
+#needs-correction .column-header li{
+    padding:3px 0;
+}
+#needs-correction .nc-data-row {
+    opacity:0.85;
+    padding:3px 0;
+    border-bottom:1px solid #eee;
+}
+#needs-correction .nc-data-row:hover {
+    opacity:1.0;
+    cursor:pointer;
+}

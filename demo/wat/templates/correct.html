@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Correction</h2>
+    <div class="row">
+        <div id="needs-correction" class="col s10">
+            <ul class="column-header">
+                <li class="col s2"><strong>Category</strong></li>
+                <li class="col s5"><strong>Original Text</strong></li>
+                <li class="col s5"><strong>Translated Text</strong></li>
+            </ul>
+            <ul>
+                {% for nc in ncs %}
+                <li class="row nc-data-row" data-nc-did="{{nc.data_id}}" data-nc-category="{{nc.category}}" data-nc-original-text="{{nc.originalText}}" data-nc-translated-text="{{nc.translatedText}}">
+                    <ul>
+                        <li class="col s2">{{nc.category}}</li>
+                        <li class="col s5">{{nc.originalText}}</li>
+                        <li class="col s5">{{nc.translatedText}}</li>
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s8">
+            <form id="correction-suggest" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn" type="submit">제출!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
+{% block pagescript %}
+<script>
+(function(doc, win, $, undefined){
+    'use strict';
+    $('.nc-data-row').click(function(e){
+        var $this = $(this);
+        var ttext = $this.attr("data-nc-translated-text");
+        var did = $this.attr('data-nc-did');
+        var select_id_string = $('#id_referenceData').attr('data-select-id');
+        console.log(did);
+        doc.getElementById('id_correctedText').value = ttext;
+        doc.getElementById('id_referenceData').value = +did;
+        //console.log(select_id_string);
+        //$('#select-options-'+ select_id_string).children()[+doc.getElementById('id_referenceData').value].click();
+    });
+
+})(document, window, $);
+</script>
+{% endblock pagescript %}
