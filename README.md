@@ -21,7 +21,16 @@
 
 
 ### RNN
-
+   * Used Modules
+      * tensorflow
+      * numpy 
+      * sklearn.cross_validation
+      * gensim.models.Word2Vec
+   * Flow
+      * GRU Layer
+      * FC layer
+      * Sigmoid Cross Entropy
+      * Predition
 
 ### DEMO
    * [DEMO Site](http://elice-guest-ds-04.koreasouth.cloudapp.azure.com:8000)
@@ -32,72 +41,8 @@
 .
 ├── data_collection
 │   └── naver_review.py
-├── demo
-│   ├── correction
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── forms.py
-│   │   ├── __init__.py
-│   │   ├── models.py
-│   │   ├── templates
-│   │   │   ├── correct.html
-│   │   │   ├── failed.html
-│   │   │   ├── success.html
-│   │   │   └── validate.html
-│   │   ├── tests.py
-│   │   ├── views.py
-│   ├── db.sqlite3
-│   ├── demo
-│   │   ├── admin.py
-│   │   ├── apis.py
-│   │   ├── apps.py
-│   │   ├── forms.py
-│   │   ├── __init__.py
-│   │   ├── models
-│   │   │   └── w2v_for_demo.model
-│   │   ├── models.py
-│   │   ├── templates
-│   │   │   └── demo.html
-│   │   ├── tests.py
-│   │   ├── urls.py
-│   │   └── views.py
-│   ├── mainmenu
-│   │   ├── admin.py
-│   │   ├── admin.pyc
-│   │   ├── apps.py
-│   │   ├── __init__.py
-│   │   ├── models.py
-│   │   ├── tests.py
-│   │   └── views.py
-│   ├── manage.py
-│   ├── static
-│   │   └── wat
-│   │       ├── css
-│   │       │   ├── reset.css
-│   │       │   └── styles.css
-│   │       ├── favicon.ico
-│   │       └── images
-│   │           ├── logo.jpg
-│   │           ├── wallpaper.jpg
-│   │           └── wat.PNG
-│   └── wat
-│       ├── __init__.py
-│       ├── __init__.pyc
-│       ├── settings.py
-│       ├── settings.pyc
-│       ├── templates
-│       │   ├── correct.html
-│       │   ├── failed.html
-│       │   ├── index.html
-│       │   ├── success.html
-│       │   ├── validate.html
-│       │   └── wat.html
-│       ├── urls.py
-│       ├── urls.pyc
-│       ├── views.py
-│       ├── views.pyc
-│       ├── wsgi.py
-│       └── wsgi.pyc
+├── demo                            - demo server
+|   ├── ...
 ├── model
 │   ├── model_cnn.py
 │   ├── model_svm.py
