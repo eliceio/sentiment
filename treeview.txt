@@ -9,6 +9,7 @@
 │   │   ├── assets
 │   │   │   ├── checked.txt
 │   │   │   ├── faied.txt
+│   │   │   ├── wat_class_split.py
 │   │   │   └── wat.txt
 │   │   ├── forms.py
 │   │   ├── forms.pyc
@@ -51,14 +52,51 @@
 │   │   ├── models.pyc
 │   │   ├── __pycache__
 │   │   │   ├── admin.cpython-35.pyc
+│   │   │   ├── admin.cpython-36.pyc
 │   │   │   ├── forms.cpython-35.pyc
 │   │   │   ├── __init__.cpython-35.pyc
+│   │   │   ├── __init__.cpython-36.pyc
 │   │   │   ├── models.cpython-35.pyc
+│   │   │   ├── models.cpython-36.pyc
 │   │   │   └── views.cpython-35.pyc
+│   │   ├── templates
+│   │   │   ├── correct.html
+│   │   │   ├── failed.html
+│   │   │   ├── success.html
+│   │   │   └── validate.html
 │   │   ├── tests.py
 │   │   ├── views.py
 │   │   └── views.pyc
 │   ├── data_insertion.py
+│   ├── db.sqlite3
+│   ├── demo
+│   │   ├── admin.py
+│   │   ├── apis.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       └── __init__.cpython-35.pyc
+│   │   ├── models
+│   │   │   └── w2v_for_demo.model
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── admin.cpython-35.pyc
+│   │   │   ├── admin.cpython-36.pyc
+│   │   │   ├── apis.cpython-35.pyc
+│   │   │   ├── __init__.cpython-35.pyc
+│   │   │   ├── __init__.cpython-36.pyc
+│   │   │   ├── models.cpython-35.pyc
+│   │   │   ├── models.cpython-36.pyc
+│   │   │   ├── urls.cpython-35.pyc
+│   │   │   └── views.cpython-35.pyc
+│   │   ├── templates
+│   │   │   └── demo.html
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
 │   ├── mainmenu
 │   │   ├── admin.py
 │   │   ├── admin.pyc
@@ -74,6 +112,7 @@
 │   │   │   ├── 0003_auto_20170722_1939.pyc
 │   │   │   ├── 0004_auto_20170722_1944.py
 │   │   │   ├── 0004_auto_20170722_1944.pyc
+│   │   │   ├── 0005_mainmenu_isvisible.py
 │   │   │   ├── __init__.py
 │   │   │   ├── __init__.pyc
 │   │   │   └── __pycache__
@@ -81,13 +120,17 @@
 │   │   │       ├── 0002_mainmenu_order.cpython-35.pyc
 │   │   │       ├── 0003_auto_20170722_1939.cpython-35.pyc
 │   │   │       ├── 0004_auto_20170722_1944.cpython-35.pyc
+│   │   │       ├── 0005_mainmenu_isvisible.cpython-35.pyc
 │   │   │       └── __init__.cpython-35.pyc
 │   │   ├── models.py
 │   │   ├── models.pyc
 │   │   ├── __pycache__
 │   │   │   ├── admin.cpython-35.pyc
+│   │   │   ├── admin.cpython-36.pyc
 │   │   │   ├── __init__.cpython-35.pyc
-│   │   │   └── models.cpython-35.pyc
+│   │   │   ├── __init__.cpython-36.pyc
+│   │   │   ├── models.cpython-35.pyc
+│   │   │   └── models.cpython-36.pyc
 │   │   ├── tests.py
 │   │   └── views.py
 │   ├── manage.py
@@ -96,16 +139,23 @@
 │   │       ├── css
 │   │       │   ├── reset.css
 │   │       │   └── styles.css
+│   │       ├── favicon.ico
 │   │       └── images
-│   │           └── wallpaper.jpg
+│   │           ├── logo.jpg
+│   │           ├── wallpaper.jpg
+│   │           └── wat.PNG
 │   └── wat
 │       ├── __init__.py
 │       ├── __init__.pyc
 │       ├── __pycache__
 │       │   ├── __init__.cpython-35.pyc
+│       │   ├── __init__.cpython-36.pyc
 │       │   ├── settings.cpython-35.pyc
+│       │   ├── settings.cpython-36.pyc
 │       │   ├── urls.cpython-35.pyc
+│       │   ├── urls.cpython-36.pyc
 │       │   ├── views.cpython-35.pyc
+│       │   ├── views.cpython-36.pyc
 │       │   └── wsgi.cpython-35.pyc
 │       ├── settings.py
 │       ├── settings.pyc
@@ -114,7 +164,8 @@
 │       │   ├── failed.html
 │       │   ├── index.html
 │       │   ├── success.html
-│       │   └── validate.html
+│       │   ├── validate.html
+│       │   └── wat.html
 │       ├── urls.py
 │       ├── urls.pyc
 │       ├── views.py
@@ -137,7 +188,22 @@
 │       └── src
 │           └── mddir.js
 ├── package.json
+├── parsing.py
 ├── README.md
-└── treeview.txt
+├── treeview_dev.txt
+├── treeview.txt
+└── word2vec_models
+    ├── dumps
+    ├── logs
+    ├── models
+    ├── naver_word2vec_only.py
+    ├── parsing.py
+    ├── requirements.txt
+    ├── session_freeze
+    ├── simpleRNN.py
+    ├── w2v_models
+    ├── wat.py
+    ├── wats
+    └── word2vec_model_generator.py
 
-22 directories, 118 files
+36 directories, 170 files
