@@ -26,6 +26,98 @@
 ### DEMO
    * [DEMO Site](http://elice-guest-ds-04.koreasouth.cloudapp.azure.com:8000)
 
+### Directory Structure explained 
+
+```
+.
+├── data_collection
+│   └── naver_review.py
+├── demo
+│   ├── correction
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── templates
+│   │   │   ├── correct.html
+│   │   │   ├── failed.html
+│   │   │   ├── success.html
+│   │   │   └── validate.html
+│   │   ├── tests.py
+│   │   ├── views.py
+│   ├── db.sqlite3
+│   ├── demo
+│   │   ├── admin.py
+│   │   ├── apis.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── __init__.py
+│   │   ├── models
+│   │   │   └── w2v_for_demo.model
+│   │   ├── models.py
+│   │   ├── templates
+│   │   │   └── demo.html
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── mainmenu
+│   │   ├── admin.py
+│   │   ├── admin.pyc
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── manage.py
+│   ├── static
+│   │   └── wat
+│   │       ├── css
+│   │       │   ├── reset.css
+│   │       │   └── styles.css
+│   │       ├── favicon.ico
+│   │       └── images
+│   │           ├── logo.jpg
+│   │           ├── wallpaper.jpg
+│   │           └── wat.PNG
+│   └── wat
+│       ├── __init__.py
+│       ├── __init__.pyc
+│       ├── settings.py
+│       ├── settings.pyc
+│       ├── templates
+│       │   ├── correct.html
+│       │   ├── failed.html
+│       │   ├── index.html
+│       │   ├── success.html
+│       │   ├── validate.html
+│       │   └── wat.html
+│       ├── urls.py
+│       ├── urls.pyc
+│       ├── views.py
+│       ├── views.pyc
+│       ├── wsgi.py
+│       └── wsgi.pyc
+├── model
+│   ├── model_cnn.py
+│   ├── model_svm.py
+│   └── model_w2v.py
+├── README.md
+├── treeview.txt
+└── word2vec_models
+    ├── dumps                       - store location for binary dumps for data
+    ├── logs                        - store location for logs
+    ├── models                      - store location for sentiment models
+    ├── parsing.py                  - Data Preprocessing
+    ├── requirements.txt            - Virtualenv requirements.txt 
+    ├── session_freeze              - freezed session files for Tensorflow
+    ├── simpleRNN.py                - RNN model
+    ├── w2v_models                  - store location for word2vec models 
+    ├── wat.py                      - word analogy reasoning task script
+    ├── wats                        - word analogy reasoning tasks word set
+    └── word2vec_model_generator.py - word2vec model generator for each set hyper parameters
+```
+
 ### Team Members
    * Sungjoon Park
    * Nayoun Seo
