@@ -13,13 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import RedirectView
 from .views import (
     IndexView,
     SuccessView,
     FailedView,
+    WatView,
 )
 from correction.views import (
     CorrectView,
@@ -34,4 +35,6 @@ urlpatterns = [
     url(r'^failed/', FailedView.as_view(), name='failed'),
     url(r'^correct/', CorrectView.as_view(), name="correct"),
     url(r'^validate/', ValidateView.as_view(), name="validate"),
+    url(r'^wat/', WatView.as_view(), name='wat'),
+    url(r'^demo/', include('demo.urls')),
 ]

@@ -1,0 +1,131 @@
+{% extends "index.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h3>Word Analogy Reasoning <i class="help-button material-icons">help</i></h3>
+        </div>
+    </div>
+    <div class="row">
+        <form id="wat" class="col s12 l8">
+            {% csrf_token %}
+            <div class="s12 l8">    
+                <label for="sentence-input">테스트 할 문장을 단어들을 입력해주세요!</label>
+                <input id="sentence-input"  name="sentence-input" value="" placeholder="한국 서울 도쿄"></textarea>
+            </div>
+            <div class="s12 l4" style="line-height:80px;">
+                <button class="btn" type="submit">제출</button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col s12 l8">
+            <div class="row">
+                <label class="col">결과</label>
+            </div>
+            <div class="row">
+                <div id="result" class="col s12">
+                    <!-- AJAX contents goes here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block TopLevelHTMLBlocks %}
+<div class="modal-popup">
+    <div class="card">
+        <div class="close-wrapper"><i class="close material-icons">close</i></div>
+        <div class="card-image">
+            <img src="{% static "wat/images/wat.PNG" %}">
+        </div>
+        <div class="card-content">
+            <div class="card-title">Word Analogy Reasoning Tasks</div>
+            <p>Word Analogy Reasoning Tasks는 Word Embedding의 결과를 검증하기 위해 사용되는 일련의 단어열 집합입니다. 
+               이는 Word Embedding의 결과물이 다차원 공간상의 벡터이기에 이 벡터들 간에 어떤 관계가 있을 것이다라는 전제를 함의하고 있습니다.
+               예를 들어, 한국의 수도는 서울, 일본의 수도는 도쿄입니다. 그렇다면, `한국`과 `서울`의 관계는 아마도 `일본`과 `도쿄`의
+               관계가 성립할 것이라는 가정입니다. 
+            </p>
+            <div class="reference-wrapper">
+                <div class="sub-title">Reference</div>
+                <div>
+                    <a href="http://www.aclweb.org/anthology/N13-1090">Linguistic Regularities in Continuous Space Word Representations - Mikolov el al. (2013)</a>
+                </div> 
+                <div>
+                    <a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality">Distributed Representations of Words and Phrases and their Compositionality - Mikolov et al. (2013) </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock TopLevelHTMLBlocks %}
+{% block pagescript %}
+<script>
+(function(win, doc, $, undefined){
+    'use strict';
+    $('#wat button').on('click', function(e){
+        var resultDOM = document.getElementById('result');
+        resultDOM.innerHTML = '';
+        e.preventDefault();
+        var sentence_input = document.getElementById('sentence-input').value;
+        var result = document.getElementById('result');
+        $.ajax({
+            type: 'GET',
+            url: win.location.origin + '/demo/wat/' + sentence_input,
+        })
+        .done(function(data) {
+                var d = data[0];
+                var resultcode = d.resultcode;
+                if (resultcode) {
+                    var toRender = doc.createElement('div');
+                    var wordsWrapper = doc.createElement('ul');
+                    var listHeader = doc.createElement('li');
+                    var answerDOM = doc.createElement('h3');
+                    var iconDOM = doc.createElement('i');
+                    iconDOM.className = 'material-icons small';
+                    iconDOM.innerHTML = 'done';
+                    answerDOM.innerHTML = d.answer;
+                    answerDOM.appendChild(iconDOM);
+                    listHeader.className = "collection-header";
+                    listHeader.appendChild(answerDOM);
+                    wordsWrapper.className = 'collection with-header';
+                    wordsWrapper.appendChild(listHeader);
+                    for(var i = 0 ; i < d.words.length; i++){
+                        var [word, prob] = d.words[i];
+                        var listElem = doc.createElement('li');
+                        var nameDOM = doc.createElement('span');
+                        var probDOM = doc.createElement('span');
+                        listElem.className = 'collection-item';
+                        nameDOM.className = 'chip';
+                        nameDOM.innerHTML = word;
+                        probDOM.innerHTML = prob;
+                        listElem.appendChild(nameDOM);
+                        listElem.appendChild(probDOM);
+                        wordsWrapper.appendChild(listElem);
+                    }
+                    toRender.appendChild(wordsWrapper);
+                } else {
+                    var toRender = doc.createElement('span');
+                    toRender.innerHTML = d.answer;
+                }
+                resultDOM.appendChild(toRender);
+            })
+        .fail(function() {
+                console.log('unknown fail!');
+            })
+        .always(function() {
+                console.log('GET - ' + sentence_input);
+            });
+    });
+
+    $('.help-button').click(function(){
+        $('.modal-popup').show();
+    });
+    $('.close').click(function(){
+        $('.modal-popup').hide();
+    })
+})(window, document, jQuery);
+</script>
+{% endblock pagescript %}
+

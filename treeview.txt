@@ -1,0 +1,143 @@
+.
+├── data_collection
+│   └── naver_review.py
+├── demo
+│   ├── correction
+│   │   ├── admin.py
+│   │   ├── admin.pyc
+│   │   ├── apps.py
+│   │   ├── assets
+│   │   │   ├── checked.txt
+│   │   │   ├── faied.txt
+│   │   │   └── wat.txt
+│   │   ├── forms.py
+│   │   ├── forms.pyc
+│   │   ├── __init__.py
+│   │   ├── __init__.pyc
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0001_initial.pyc
+│   │   │   ├── 0002_auto_20170720_1819.py
+│   │   │   ├── 0002_auto_20170720_1819.pyc
+│   │   │   ├── 0003_watcategory_example.py
+│   │   │   ├── 0003_watcategory_example.pyc
+│   │   │   ├── 0004_auto_20170720_2146.py
+│   │   │   ├── 0004_auto_20170720_2146.pyc
+│   │   │   ├── 0005_dataneedscorrection_status.py
+│   │   │   ├── 0005_dataneedscorrection_status.pyc
+│   │   │   ├── 0006_auto_20170720_2339.py
+│   │   │   ├── 0006_auto_20170720_2339.pyc
+│   │   │   ├── 0007_auto_20170722_2040.py
+│   │   │   ├── 0007_auto_20170722_2040.pyc
+│   │   │   ├── 0008_auto_20170722_2122.py
+│   │   │   ├── 0008_auto_20170722_2122.pyc
+│   │   │   ├── 0009_auto_20170722_2232.py
+│   │   │   ├── 0009_auto_20170722_2232.pyc
+│   │   │   ├── __init__.py
+│   │   │   ├── __init__.pyc
+│   │   │   └── __pycache__
+│   │   │       ├── 0001_initial.cpython-35.pyc
+│   │   │       ├── 0002_auto_20170720_1819.cpython-35.pyc
+│   │   │       ├── 0003_watcategory_example.cpython-35.pyc
+│   │   │       ├── 0004_auto_20170720_2146.cpython-35.pyc
+│   │   │       ├── 0005_dataneedscorrection_status.cpython-35.pyc
+│   │   │       ├── 0006_auto_20170720_2339.cpython-35.pyc
+│   │   │       ├── 0007_auto_20170722_2038.cpython-35.pyc
+│   │   │       ├── 0007_auto_20170722_2040.cpython-35.pyc
+│   │   │       ├── 0008_auto_20170722_2122.cpython-35.pyc
+│   │   │       ├── 0009_auto_20170722_2232.cpython-35.pyc
+│   │   │       └── __init__.cpython-35.pyc
+│   │   ├── models.py
+│   │   ├── models.pyc
+│   │   ├── __pycache__
+│   │   │   ├── admin.cpython-35.pyc
+│   │   │   ├── forms.cpython-35.pyc
+│   │   │   ├── __init__.cpython-35.pyc
+│   │   │   ├── models.cpython-35.pyc
+│   │   │   └── views.cpython-35.pyc
+│   │   ├── tests.py
+│   │   ├── views.py
+│   │   └── views.pyc
+│   ├── data_insertion.py
+│   ├── mainmenu
+│   │   ├── admin.py
+│   │   ├── admin.pyc
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── __init__.pyc
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0001_initial.pyc
+│   │   │   ├── 0002_mainmenu_order.py
+│   │   │   ├── 0002_mainmenu_order.pyc
+│   │   │   ├── 0003_auto_20170722_1939.py
+│   │   │   ├── 0003_auto_20170722_1939.pyc
+│   │   │   ├── 0004_auto_20170722_1944.py
+│   │   │   ├── 0004_auto_20170722_1944.pyc
+│   │   │   ├── __init__.py
+│   │   │   ├── __init__.pyc
+│   │   │   └── __pycache__
+│   │   │       ├── 0001_initial.cpython-35.pyc
+│   │   │       ├── 0002_mainmenu_order.cpython-35.pyc
+│   │   │       ├── 0003_auto_20170722_1939.cpython-35.pyc
+│   │   │       ├── 0004_auto_20170722_1944.cpython-35.pyc
+│   │   │       └── __init__.cpython-35.pyc
+│   │   ├── models.py
+│   │   ├── models.pyc
+│   │   ├── __pycache__
+│   │   │   ├── admin.cpython-35.pyc
+│   │   │   ├── __init__.cpython-35.pyc
+│   │   │   └── models.cpython-35.pyc
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── manage.py
+│   ├── static
+│   │   └── wat
+│   │       ├── css
+│   │       │   ├── reset.css
+│   │       │   └── styles.css
+│   │       └── images
+│   │           └── wallpaper.jpg
+│   └── wat
+│       ├── __init__.py
+│       ├── __init__.pyc
+│       ├── __pycache__
+│       │   ├── __init__.cpython-35.pyc
+│       │   ├── settings.cpython-35.pyc
+│       │   ├── urls.cpython-35.pyc
+│       │   ├── views.cpython-35.pyc
+│       │   └── wsgi.cpython-35.pyc
+│       ├── settings.py
+│       ├── settings.pyc
+│       ├── templates
+│       │   ├── correct.html
+│       │   ├── failed.html
+│       │   ├── index.html
+│       │   ├── success.html
+│       │   └── validate.html
+│       ├── urls.py
+│       ├── urls.pyc
+│       ├── views.py
+│       ├── views.pyc
+│       ├── wsgi.py
+│       └── wsgi.pyc
+├── model
+│   ├── model_cnn.py
+│   ├── model_svm.py
+│   └── model_w2v.py
+├── node_modules
+│   └── mddir
+│       ├── AUTHORS
+│       ├── CHANGES.md
+│       ├── LICENSE.txt
+│       ├── logo.svg
+│       ├── mddir.png
+│       ├── package.json
+│       ├── README.md
+│       └── src
+│           └── mddir.js
+├── package.json
+├── README.md
+└── treeview.txt
+
+22 directories, 118 files

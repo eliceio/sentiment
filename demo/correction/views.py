@@ -25,11 +25,11 @@ class CorrectView(IndexView):
         "form": form_class(),
         "ncs": DataNeedsCorrection.objects.random_defaults(SIZE)
     })
-    def get_form(self):
-        return self.form_class()
+    def get_form(self, request):
+        return self.form_class(request)
 
     def post(self, request, *args, **kwargs):
-        form = self.get_form()
+        form = self.get_form(request.POST or None)
         if form.is_valid():
             return self.form_valid(form)
         else:
@@ -44,14 +44,18 @@ class CorrectView(IndexView):
 
 class ValidateView(IndexView):
     template = "validate.html"
-    form_class = DataValidateForm()
+    form_class = DataValidateForm
     context = dict(IndexView.context)
     context.update({
         "title":'Data Validation',
         "form":form_class,
         "cds": DataCorrected
     })
+    def get_form(self, request):
+        return self.form_class(request)
+
     def post(self, request, *args, **kwargs):
+        form = self.get_form(request.POST or None)
         if form.is_valid():
             return self.form_valid(form)
         else:

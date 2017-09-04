@@ -7,7 +7,8 @@ class Mainmenu(models.Model):
     slug = models.SlugField(max_length=50, db_index=True)
     path = models.CharField(max_length=30,)
     order = models.PositiveIntegerField()
-    
+    isVisible = models.BooleanField(default=False)
+
     class Meta:
         ordering = ["order"]
 

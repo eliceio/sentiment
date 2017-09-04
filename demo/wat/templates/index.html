@@ -3,15 +3,16 @@
 <html>
     <head>
         <title>{{ title }}</title>
-        
+        <link rel="icon" href="{% static "wat/favicon.ico" %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="{% static "wat/css/reset.css" %}" />
         <link rel="stylesheet" href="{% static "wat/css/styles.css" %}" />
     </head>
     <body>
         <header>
             <nav id="nav-mobile" class="navigation">
-                <ul> 
+                <ul class="container"> 
                     {% for menu in menus %}
                     <li><a href="/{{menu.path}}">{{ menu.name }}</a></li> 
                     {% endfor %}
@@ -21,17 +22,106 @@
         <main>
             {% block content %}
             <div class="container">
-                <h2>Word Analogy Reasoning Tasks</h2>
-                <p>
-                    Word Analogy Reasoning Tasks는 Word Embedding의 결과를 검증하기 위해 사용되는 일련의 벡터의 집합입니다. 
-                    이는 Word Embedding의 결과물이 다차원 공간상의 벡터이기에 이 벡터들 간에 어떤 관계가 있을 것이다라는 전제를 함의하고 있습니다.
-                    예를 들어, 한국의 수도는 서울, 일본의 수도는 도쿄입니다. 그렇다면, `한국`과 `서울`의 관계는 아마도 `일본`과 `도쿄`의
-                    관계가 성립할 것이라는 가정입니다. 
-                </p>
-                <p>
-                    이 페이지는 Word Analogy Reasoning Tasks에 사용되던 관습적인 단어들([이 페이지])을 한국어로 번역하거나,
-                    추가하는 작업을 다 같이 해보고자 하는 마음에서 만들었습니다. 
-                </p>
+                <ul>
+                    <section>
+                        <h2>
+                            <strong><img style="width:100%;" src="{% static "wat/images/logo.jpg" %}"></img></strong>
+                        </h2>
+                    </section>
+                    <section>
+                        <p>이 데모 웹사이트는 Attention Network을 이용한 한국어 감정 분석에 대한 내용을 담고 있습니다.</p>
+                    </section>
+                    <section>
+                        <div class="introduction-wrapper">
+                        <ul class="level0">
+                            <li>
+                                <h5 class="sub-title">1. 데이터 소스</h5>
+                                <ul class="collection level1">
+                                    <li class="collection-item">
+                                        <span class="content-key">Wikipedia DUMP</span>
+                                        <span class="content-value">총 4481만여개의 단어를 이용한 학습</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">네이버 영화평</span>
+                                        <span class="content-value">총 160여만개의 단어를 이용한 테스트</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">Word Analogy Reasoning sets</span>
+                                        <span class="content-value"><a href="http://download.tensorflow.org/data/questions-words.txt">Question words</a>을 번역 + 데이터 추가</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5 class="sub-title">2. 데이터 전처리</h5>
+                                <ul class="collection level1">
+                                    <li class="collection-item">
+                                        <span class="content-key">Data Parsing</span>
+                                        <span class="content-value">필요 없는 태그 제거 및 컨텐츠 파싱</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">Pos Tagging</span>
+                                        <span class="content-value">Konlpy Twitter를 이용한 품사 태깅</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">Lemmatization</span>
+                                        <span class="content-value">태깅 데이터에 기반</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">Word Embedding</span>
+                                        <span class="content-value">Word2Vec model을 이용한 word representation vector생성</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">Padding</span>
+                                        <span class="content-value">embedded vector를 모델에 맞는 데이터의 Shape을 맞춰주는 과정</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5 class="sub-title">3. 모델 수립</h5>
+                                <ul class="collection level1">
+                                    <li class="collection-item">
+                                        <span class="content-key">SVM</span>
+                                        <span class="content-value">Support Vector Machine을 이용한 baseline experiment</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">CNN</span>
+                                        <span class="content-value">CNN을 이용한 baseline experiment</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">RNN</span>
+                                        <span class="content-value">RNN을 이용한 baseline experiment</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">Attention Network Convolutional layer added</span>
+                                        <span class="content-value">Attention이 적용된 RNN</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5 class="sub-title">4. 모델 검증</h5>
+                                <ul class="collection level1">
+                                    <li class="collection-item">
+                                        <span class="content-key">Word2Vec</span>
+                                        <span class="content-value">Word Analogy Reasoning Set을 이용한 검증</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">CNN</span>
+                                        <span class="content-value">Testset - Naver 영화평</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">RNN</span>
+                                        <span class="content-value">Testset - Naver 영화평</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="content-key">Attention Network Convolutional layer added</span>
+                                        <span class="content-value">Testset - Naver 영화평</span>
+                                    </li>
+                                </ul> 
+                            </li>    
+                        </ul>
+                        </div>
+                    </section>
+                </ul>
             </div>
             {% endblock content %}
         </main>
@@ -39,6 +129,8 @@
             
         </footer> {% endcomment %}
     </body>
+    {% block TopLevelHTMLBlocks %}
+    {% endblock TopLevelHTMLBlocks %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     {% block pagescript %}

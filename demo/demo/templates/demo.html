@@ -1,0 +1,100 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h3>Demo page</h3>
+        </div>
+    </div>
+    <div class="row">
+        <form id="demo">
+            <div class="col s12">    
+                <label for="sentence-input">문장을 입력해주세요!</label>
+                <input name="sentence-input" value="" placeholder="최고의 영화였습니다."></textarea>
+                <button class="btn">제출</button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col s12 l8">
+            <div class="row">
+                <label class="col">결과</label>
+            </div>
+            <div class="row">
+                <div id="result" class="col s12">
+                    <!-- AJAX contents goes here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block pagescript %}
+<script>
+(function(win, doc, $, undefined){
+    'use strict';
+    $('#demo button').on('click', function(e){
+        var resultDOM = document.getElementById('result');
+        resultDOM.innerHTML = '';
+        e.preventDefault();
+        var sentence_input = document.getElementById('sentence-input').value;
+        var result = document.getElementById('result');
+        $.ajax({
+            type: 'GET',
+            url: win.location.origin + '/demo/wat/' + sentence_input,
+        })
+        .done(function(data) {
+                var d = data[0];
+                var resultcode = d.resultcode;
+                if (resultcode) {
+                    var toRender = doc.createElement('div');
+                    var wordsWrapper = doc.createElement('ul');
+                    var listHeader = doc.createElement('li');
+                    var answerDOM = doc.createElement('h3');
+                    var iconDOM = doc.createElement('i');
+                    iconDOM.className = 'material-icons small';
+                    iconDOM.innerHTML = 'done';
+                    answerDOM.innerHTML = d.answer;
+                    answerDOM.appendChild(iconDOM);
+                    listHeader.className = "collection-header";
+                    listHeader.appendChild(answerDOM);
+                    wordsWrapper.className = 'collection with-header';
+                    wordsWrapper.appendChild(listHeader);
+                    for(var i = 0 ; i < d.words.length; i++){
+                        var [word, prob] = d.words[i];
+                        var listElem = doc.createElement('li');
+                        var nameDOM = doc.createElement('span');
+                        var probDOM = doc.createElement('span');
+                        listElem.className = 'collection-item';
+                        nameDOM.className = 'chip';
+                        nameDOM.innerHTML = word;
+                        probDOM.innerHTML = prob;
+                        listElem.appendChild(nameDOM);
+                        listElem.appendChild(probDOM);
+                        wordsWrapper.appendChild(listElem);
+                    }
+                    toRender.appendChild(wordsWrapper);
+                } else {
+                    var toRender = doc.createElement('span');
+                    toRender.innerHTML = d.answer;
+                }
+                resultDOM.appendChild(toRender);
+            })
+        .fail(function() {
+                console.log('unknown fail!');
+            })
+        .always(function() {
+                console.log('GET - ' + sentence_input);
+            });
+    });
+
+    $('.help-button').click(function(){
+        $('.modal-popup').show();
+    });
+    $('.close').click(function(){
+        $('.modal-popup').hide();
+    })
+})(window, document, jQuery);
+</script>
+{% endblock pagescript %}

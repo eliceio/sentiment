@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'correction',
     'mainmenu',
+    'demo',
 ]
 
 MIDDLEWARE = [
@@ -53,10 +53,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'wat.urls'
 BASE_SRC_PATH = os.path.join(BASE_DIR, 'wat')
+BASE_CORRECTION_PATH = os.path.join(BASE_DIR, 'correction')
+BASE_DEMO_PATH = os.path.join(BASE_DIR, 'demo')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_SRC_PATH, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_SRC_PATH, 'templates'),
+            os.path.join(BASE_CORRECTION_PATH, 'templats'),
+            os.path.join(BASE_DEMO_PATH, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
